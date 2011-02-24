@@ -1,9 +1,11 @@
 #!/bin/sh
 
-if [ ! -h /etc/profile.d/colors.sh ]; then
-    ln -s /usr/local/etc/profile.d/colors.sh /etc/profile.d/colors.sh
-fi
+scripts="colors ixon genpasswd"
 
-if [ ! -h /etc/profile.d/ixon.sh ]; then
-    ln -s /usr/local/etc/profile.d/ixon.sh /etc/profile.d/ixon.sh
-fi
+for script in $scripts; do
+    if [ ! -h "/etc/profile.d/$script.sh" ]; then
+        ln -s /usr/local/etc/profile.d/$script.sh \
+            /etc/profile.d/$script.sh
+    fi
+done
+
