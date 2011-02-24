@@ -1,0 +1,11 @@
+#
+# Regular cron jobs for apt-update
+#
+SHELL=/bin/sh
+PATH=/usr/local/sbin:/bin:/usr/bin
+LOG=/dev/null
+
+# Run on Sun, Tue, Thu at 2:05 AM
+# m h dom mon dow user  command
+05 2 * * 0,2,4 root test -x /usr/local/sbin/apt-update && apt-update > $LOG
+

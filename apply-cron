@@ -1,0 +1,11 @@
+#!/bin/sh 
+ 
+crontabs="apt-update" 
+ 
+for crontab in $crontabs; do 
+    if [ ! -h "/etc/cron.d/$crontab" ]; then 
+        ln -s /usr/local/etc/cron.d/$crontab \
+            /etc/cron.d/$crontab 
+    fi  
+done
+
