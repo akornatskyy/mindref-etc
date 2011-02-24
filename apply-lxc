@@ -1,0 +1,29 @@
+#!/bin/sh
+
+if [ -z "`dpkg -s lxc 2>/dev/null | grep 'ok installed'`" ]; then
+    apt-get -y install bridge-utils debootstrap lxc
+    mkdir /cgroup
+    echo "cgroup /cgroup cgroup defaults 0 0" >> /etc/fstab
+    mount -a    
+fi
+
+iface='/etc/network/interfaces'
+
+if [ -z "`cat $iface | grep br0`" ]; then
+    sed -e 's/allow-hotplug eth0/#allow-hotplug eth0/' \
+        -e 's/iface eth0/#iface eth0/' $iface > /tmp/x && mv /tmp/x $iface
+
+    cat <<EOF >> $iface
+auto br0
+iface br0 inet dhcp
+    bridge_ports eth0
+    bridge_fd 0
+    bridge_maxwait 0
+EOF
+
+    /etc/init.d/networking restart
+fi
+
+if [ ! -h /etc/lxc/packages ]; then
+    ln -s /usr/local/etc/lxc/packages /etc/lxc/packages
+fi

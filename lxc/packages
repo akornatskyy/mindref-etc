@@ -1,0 +1,14 @@
+# Extra packages
+packages=\
+ifupdown,\
+locales,\
+libui-dialog-perl,\
+dialog,\
+isc-dhcp-client,\
+netbase,\
+net-tools,\
+iproute,\
+openssh-server,\
+vim,\
+apt-utils
+
