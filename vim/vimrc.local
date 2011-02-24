@@ -29,3 +29,7 @@ set fileencodings=utf-8,cp1251
 
 " Disable autoindent in VIM
 nnoremap <F8> :setl noai nocin nosi inde=<CR>
+
+" Use Ctrl+S to save file is edit and command modes
+inoremap <c-s> <c-o>:w<cr>
+nnoremap <c-s> :w<cr>

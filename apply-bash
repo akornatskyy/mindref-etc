@@ -3,3 +3,7 @@
 if [ ! -h /etc/profile.d/colors.sh ]; then
     ln -s /usr/local/etc/profile.d/colors.sh /etc/profile.d/colors.sh
 fi
+
+if [ ! -h /etc/profile.d/ixon.sh ]; then
+    ln -s /usr/local/etc/profile.d/ixon.sh /etc/profile.d/ixon.sh
+fi
