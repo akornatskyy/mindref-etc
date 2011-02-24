@@ -27,3 +27,5 @@ set termencoding=utf-8
 set encoding=utf-8
 set fileencodings=utf-8,cp1251
 
+" Disable autoindent in VIM
+nnoremap <F8> :setl noai nocin nosi inde=<CR>
