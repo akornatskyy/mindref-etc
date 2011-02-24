@@ -1,0 +1,21 @@
+#!/bin/sh
+
+if [ -z "`dpkg -s vim 2>/dev/null | grep 'ok installed'`" ]; then
+    apt-get -y install vim
+fi
+
+if [ -z "`dpkg -s less 2>/dev/null | grep 'ok installed'`" ]; then
+    apt-get -y install less
+fi
+
+update-alternatives --set vi /usr/bin/vim.basic
+update-alternatives --set editor /usr/bin/vim.basic
+
+if [ ! -f /usr/share/vim/vimcurrent/colors/wombat256.vim ]; then
+    wget -O /usr/share/vim/vimcurrent/colors/wombat256.vim \
+        http://www.vim.org/scripts/download_script.php?src_id=13397
+fi
+
+if [ ! -h /etc/vim/vimrc.local ]; then
+    ln -s /usr/local/etc/vim/vimrc.local /etc/vim/vimrc.local
+fi

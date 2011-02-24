@@ -1,0 +1,29 @@
+" Enable syntax highlighting
+syntax on
+filetype plugin indent on
+
+" If using a dark background within the editing area and syntax 
+" highlighting turn on this option as well
+set background=dark
+
+" Enable mouse usage (all modes) in terminals
+set mouse=a 
+
+set t_Co=256
+"colorscheme desert256
+colorscheme wombat256
+
+set expandtab           " Convert tabs to spaces
+set tabstop=4           " Tabs = 4 spaces
+set shiftwidth=4        " Indent/outdent 4 spaces
+
+set incsearch           " Do incremental searching
+set showmatch           " Show matching brackets
+
+set nobackup
+set noswapfile
+set number
+set termencoding=utf-8
+set encoding=utf-8
+set fileencodings=utf-8,cp1251
+
