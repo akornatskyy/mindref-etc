@@ -9,6 +9,7 @@ netbase,\
 net-tools,\
 iproute,\
 openssh-server,\
+wget,\
 vim,\
 apt-utils
 
