@@ -1,0 +1,10 @@
+#
+# Regular cron job for time synchronization
+#
+PATH=/usr/local/sbin
+HOME=/
+LOG=/dev/null
+
+# Every 23 hours, e.g. 2:11, 13:11, etc
+11 */23 * * * root test -x /usr/local/sbin/sync-time && sync-time > $LOG
+
