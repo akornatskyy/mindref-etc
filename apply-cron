@@ -1,4 +1,8 @@
 #!/bin/sh 
+
+if [ -z "`dpkg -s cron 2>/dev/null | grep 'ok installed'`" ]; then
+    apt-get -y install cron
+fi
  
 crontabs="apt-update" 
  
