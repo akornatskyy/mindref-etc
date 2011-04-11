@@ -1,11 +1,7 @@
 #!/bin/sh
 
 if [ -z "`dpkg -s vim 2>/dev/null | grep 'ok installed'`" ]; then
-    apt-get -y install vim
-fi
-
-if [ -z "`dpkg -s less 2>/dev/null | grep 'ok installed'`" ]; then
-    apt-get -y install less
+    apt-get -y install wget less vim
 fi
 
 update-alternatives --set vi /usr/bin/vim.basic
