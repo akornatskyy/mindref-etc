@@ -5,7 +5,7 @@ SHELL=/bin/sh
 PATH=/usr/local/sbin:/sbin:/usr/sbin:/bin:/usr/bin
 LOG=/dev/null
 
-# Run on Mon at 2:05 AM
+# Run on Tue at 2:05 AM
 # m h dom mon dow user  command
-05 2 * * 1 root test -x /usr/local/sbin/apt-upgrade && apt-upgrade > $LOG
+05 2 * * 2 root test -x /usr/local/sbin/apt-upgrade && apt-upgrade > $LOG
 
