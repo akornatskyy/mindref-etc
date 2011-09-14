@@ -1,43 +1,85 @@
+
+" Vim options
+" ===========
+" http://vimdoc.sourceforge.net/htmldoc/options.html
+
+set nocompatible
+
+" Detect the type of file
+filetype on
+" Load filetype plugins
+filetype plugin on
+" Load indent files for specific filetypes
+filetype indent on
+
+" The title of the window
+set title
+" Show the line and column number of the cursor position
+set ruler
+" Show (partial) command in status line.
+set showcmd
+" Comma separated list of screen columns that are highlighted
+set colorcolumn=79
+" Maximum width of text that is being inserted.  A longer line will be
+" broken after white space to get this width.
+set textwidth=79
+
 " Enable syntax highlighting
 syntax on
-
-" If using a dark background within the editing area and syntax 
+" If using a dark background within the editing area and syntax
 " highlighting turn on this option as well
 set background=dark
-
-if has("autocmd")
-    " Uncomment the following to have Vim jump to the last position when
-    " reopening a file
-    au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
-
-    " Uncomment the following to have Vim load indentation rules and plugins
-    " according to the detected filetype.
-    filetype plugin indent on
-endif
-
+" number of colors
 set t_Co=256
-"colorscheme desert256
+" Load color scheme
 colorscheme wombat256
-
-set expandtab           " Convert tabs to spaces
-set tabstop=4           " Tabs = 4 spaces
-set shiftwidth=4        " Indent/outdent 4 spaces
-
-" The following are commented out as they cause vim to behave a lot
-" differently from regular Vi. They are highly recommended though.
-set showcmd             " Show (partial) command in status line.
-set showmatch           " Show matching brackets.
-set ignorecase          " Do case insensitive matching
-set smartcase           " Do smart case matching
-set incsearch           " Incremental search
-set autowrite           " Automatically save before commands like :next and :make
-set hidden              " Hide buffers when they are abandoned
-set mouse=a             " Enable mouse usage (all modes)
-
-set nobackup
-set noswapfile
-
+" Turn on line numbers
 set number
+
+" Convert tabs to spaces
+set expandtab
+" Tabs = 4 spaces
+set tabstop=4
+" Indent/outdent 4 spaces
+set shiftwidth=4
+
+" Show matching brackets
+set showmatch
+" how many tenths of a second to blink matching brackets for
+set matchtime=5
+
+" Do case insensitive matching
+set ignorecase
+" Do smart case matching
+set smartcase
+" Incremental search
+set incsearch
+" Highlight search
+set hlsearch
+" Do not redraw while running macros
+set lazyredraw
+" Automatically save before commands like :next and :make
+set autowrite
+" Hide buffers when they are abandoned
+set hidden
+" Enable mouse usage (all modes)
+set mouse=a
+" make backspace work normal (indent, eol, start)
+set backspace=2
+" shortens messages to avoid 'press a key' prompt
+set shortmess=atI
+
+" how automatic formatting is to be done
+set formatoptions=tcrqn
+" take indent for new line from previous line
+set autoindent
+" smart autoindenting for C programs
+set smartindent
+
+" Switch off automatic creation of backup files
+set nobackup
+set nowritebackup
+set noswapfile
 
 set termencoding=utf-8
 set encoding=utf-8
@@ -50,6 +92,46 @@ nnoremap <F8> :setl noai nocin nosi inde=<CR>
 inoremap <c-s> <c-o>:w<cr>
 nnoremap <c-s> :w<cr>
 
-" Hide files and directories in Explore plugin
-let g:netrw_list_hide = '.pyc,.hg,.svn,.egg-info'
+" Folding
+" =======
+" zM to fold everything
+" zR to unfold everything
+" za to toggle the current fold
+" zA to recursively toggle the current fold
+
+" Folding based on indentation:
+set foldmethod=indent
+set nofoldenable
+
+" Explore
+" =======
+
+" Hide files and directories
+let g:netrw_list_hide = '.pyc,.pyo,.o,.hg,.svn,.egg-info'
+
+" NERDTree
+" ========
+" https://github.com/scrooloose/nerdtree/blob/master/doc/NERD_tree.txt
+
+" Shorter commands to toggle NERDTree display
+nnoremap TT :NERDTreeToggle<CR>
+
+" This option is used to specify which files the NERD tree
+" should ignore.  It must be a list of regular expressions.
+let NERDTreeIgnore=['\.pyc$', '\.egg-info$', '\.pyo$', '\.gz$', '\.zip$',
+    \ '^__pycache__$', '\.o$', '^build$', '^dist$', '^env$']
+
+" Autocmd
+" =======
+
+if has("autocmd")
+    " Remove any trailing whitespace that is in the file
+    autocmd BufRead,BufWrite * if ! &bin | silent! %s/\s\+$//ge | endif
+
+    " Uncomment the following to have Vim jump to the last position when
+    " reopening a file
+    autocmd BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$")
+        \ | exe "normal! g'\"" | endif
+endif
+
 
