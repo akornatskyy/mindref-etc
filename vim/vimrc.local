@@ -6,7 +6,7 @@
 set nocompatible
 
 " Detect the type of file
-filetype on
+"filetype on
 " Load filetype plugins
 filetype plugin on
 " Load indent files for specific filetypes
@@ -20,9 +20,9 @@ set ruler
 set showcmd
 " Comma separated list of screen columns that are highlighted
 set colorcolumn=79
-" Maximum width of text that is being inserted.  A longer line will be
+" Maximum width of text that is being inserted. A longer line will be
 " broken after white space to get this width.
-set textwidth=79
+set textwidth=65
 
 " Enable syntax highlighting
 syntax on
@@ -39,14 +39,15 @@ set number
 " Convert tabs to spaces
 set expandtab
 " Tabs = 4 spaces
+set smarttab
 set tabstop=4
 " Indent/outdent 4 spaces
 set shiftwidth=4
 
 " Show matching brackets
 set showmatch
-" how many tenths of a second to blink matching brackets for
-set matchtime=5
+" how many tenths of a second to blink matching
+set matchtime=2
 
 " Do case insensitive matching
 set ignorecase
@@ -56,8 +57,10 @@ set smartcase
 set incsearch
 " Highlight search
 set hlsearch
+" Improves smoothness of redrawing
+set ttyfast
 " Do not redraw while running macros
-set lazyredraw
+set nolazyredraw
 " Automatically save before commands like :next and :make
 set autowrite
 " Hide buffers when they are abandoned
@@ -68,12 +71,18 @@ set mouse=a
 set backspace=2
 " shortens messages to avoid 'press a key' prompt
 set shortmess=atI
+" don't bell or blink
+set noerrorbells
+set vb t_vb=
+" Minimal number of screen lines to keep above
+" and below the cursor.
+set scrolloff=4
 
 " how automatic formatting is to be done
-set formatoptions=tcrqn
+set formatoptions=croq
 " take indent for new line from previous line
 set autoindent
-" smart autoindenting for C programs
+" smart autoindenting
 set smartindent
 
 " Switch off automatic creation of backup files
