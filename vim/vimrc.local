@@ -116,7 +116,7 @@ set nofoldenable
 " =======
 
 " Hide files and directories
-let g:netrw_list_hide = '.pyc,.pyo,.o,.hg,.svn,.egg-info'
+let g:netrw_list_hide = '.pyc,.pyo,.o,.mo,.hg,.svn,.egg-info'
 
 " NERDTree
 " ========
@@ -128,7 +128,7 @@ nnoremap TT :NERDTreeToggle<CR>
 " This option is used to specify which files the NERD tree
 " should ignore.  It must be a list of regular expressions.
 let NERDTreeIgnore=['\.pyc$', '\.egg-info$', '\.pyo$', '\.gz$', '\.zip$',
-    \ '^__pycache__$', '\.o$', '^build$', '^dist$', '^env$']
+    \ '^__pycache__$', '\.o$', '\.mo$', '^build$', '^dist$', '^env$']
 
 " Autocmd
 " =======
